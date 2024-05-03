@@ -88,6 +88,49 @@ search.addEventListener("click", () => {
         const elCloneInfoWeather = infoWeather.cloneNode(true);
         const elCloneInfoHumidity = infoHumidity.cloneNode(true);
         const elCloneInfoWind = infoWind.cloneNode(true);
+
+        elCloneInfoWeather.id = "clone_info_weather";
+        elCloneInfoWeather.classList.add("active_clone");
+
+        elCloneInfoHumidity.id = "clone_info_humidity";
+        elCloneInfoHumidity.classList.add("active_clone");
+
+        elCloneInfoWind.id = "clone_info_wind";
+        elCloneInfoWind.classList.add("active_clone");
+
+        setTimeout(() => {
+          infoWeather.insertAdjacentElement("afterend", elCloneInfoWeather);
+          infoHumidity.insertAdjacentElement("afterend", elCloneInfoHumidity);
+          infoWind.insertAdjacentElement("afterend", elCloneInfoWind);
+        }, 2200);
+
+        const CloneInfoWeather = document.querySelectorAll(
+          ".info_weather.actice_clone"
+        );
+        const totalCloneInfoWeather = CloneInfoWeather.length;
+        const CloneInfoWeatherFirst = CloneInfoWeather[0];
+
+        const CloneInfoHumidity = document.querySelectorAll(
+          ".info_humidity.actice_clone"
+        );
+        const CloneInfoHumidityFirst = CloneInfoHumidity[0];
+
+        const CloneInfoWind = document.querySelectorAll(
+          ".info_wind.actice_clone"
+        );
+        const CloneInfoWindFirst = CloneInfoWind[0];
+
+        if (totalCloneInfoWeather > 0) {
+          CloneInfoWeatherFirst.classList.remove("active_clone");
+          CloneInfoHumidityFirst.classList.remove("active_clone");
+          CloneInfoWindFirst.classList.remove("active_clone");
+
+          setTimeout(() => {
+            CloneInfoWeatherFirst.remove();
+            CloneInfoHumidityFirst.remove();
+            CloneInfoWindFirst.remove();
+          }, 2200);
+        }
       }
     });
 });

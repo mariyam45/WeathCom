@@ -14,6 +14,7 @@ body {
   min-height: 100vh;
   background: url("assets/bg11.jpg") center;
   background-size: cover;
+  overflow: hidden;
 }
 .container {
   position: relative;
@@ -210,4 +211,34 @@ body {
 
 .city_hide {
   display: none;
+}
+
+#clone_info_weather,
+#clone_info_humidity,
+#clone_info_wind {
+  position: absolute;
+  transform: translateY(-100%);
+}
+#clone_info_weather .weather {
+  transform: translateY(120%);
+  transition: transform 1s ease, opacity 0s;
+  transition-delay: 0s, 2s;
+}
+.weather_box:not(.active) #clone_info_weather .weather {
+  opacity: 0;
+  transition-delay: 0s;
+}
+.active_clone#clone_info_weather .weather {
+  transform: translateY(0%);
+}
+
+#clone_info_humidity span,
+#clone_info_wind span {
+  transform: translateY(100%);
+  transition: transform 1s ease;
+}
+
+.active_clone#clone_info_humidity span,
+.active_clone#clone_info_wind span {
+  transform: translateY(0%);
 }
